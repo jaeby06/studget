@@ -1,20 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Provider as PaperProvider } from 'react-native-paper';
+import Login from './Components/Login'
+import Landing from './Components/Landing'
+import Register from './Components/Register'
+import Recover from './Components/Recover'
+import Dashboard from './Components/Dashboard'
 
-export default function App() {
+const App = () => {
+  const [currentPage, setCurrentPage] = useState('landing');
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'landing':
+        return <Landing onSwitch={() => setCurrentPage('login')} onRegister={() => setCurrentPage('register')}/>
+      case 'login':
+        return <Login onSwitch={() => setCurrentPage('recover')} onRegister={() => setCurrentPage('register')} onLogin={() => setCurrentPage('dashboard')} onClick={() => setCurrentPage('landing')} />;
+      case 'dashboard':
+        return <Dashboard />
+      case 'register':
+        return <Register onSwitch={() => setCurrentPage('login')} />;
+      case 'recover':
+        return <Recover onSwitch={() => setCurrentPage('login')} />;
+      default:
+        return <Landing onSwitch={() => setCurrentPage('login')} onRegister={() => setCurrentPage('register')} />;
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider>
+      {renderPage()}
+    </PaperProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
