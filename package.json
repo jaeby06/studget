@@ -9,11 +9,13 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-vector-icons/feather": "^4.29.2-alpha.35",
     "expo": "~51.0.28",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
     "react-native": "0.74.5",
     "react-native-paper": "^5.12.5",
+    "react-native-picker-select": "^9.3.1",
     "react-native-vector-icons": "^10.2.0"
   },
   "devDependencies": {

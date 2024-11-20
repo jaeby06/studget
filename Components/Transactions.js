@@ -1,35 +1,21 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
-const Dashboard = ({onSwitch, onTransact}) => {
+const Transactions = ({onSwitch}) => {
   return (
     <View style={styles.container}>
      <View style={styles.container2}>
       <View style={styles.iconTextContainer}>
-        <TouchableOpacity>
-        <View style={styles.avatarContainer}>
-        <Image 
-          source={require('../assets/avatar.png')}// For drawer
-          style={styles.avatar} /> 
-      </View>
-        </TouchableOpacity>
-        <Text style={styles.text}>Welcome Back!</Text>
-        <TouchableOpacity>
-          <Icon name="bell" size={30} color="#fff" borderRadius={50} />
+        <TouchableOpacity style={styles.button} onPress={onSwitch} >
+          <Feather name="arrow-left" size={30} color="#fff"/>
         </TouchableOpacity>
       </View >
       <Text style={styles.bal} >Account Balance</Text>
-      <View style={styles.transact}>
-      <Text style={{fontSize: 34 ,color: '#fff'}} >₱ 1,000,000</Text>
-      <TouchableOpacity style={styles.button}>
-      <Feather name="plus-circle" size={35} color="#000" />
-        <Text style={styles.buttonText1}>Cash In</Text>
-      </TouchableOpacity>
-      </View>
+      <Text style={{marginBottom: 20, fontSize: 34 ,color: '#fff'}} >₱ 1,000,000</Text>
       <View style={styles.info}>
-      <TouchableOpacity onPress={onTransact}>
+      <TouchableOpacity>
           <Feather name="arrow-up-left" size={40} color="#fff" borderRadius={50} justifyContent="center"/>
         </TouchableOpacity>
         <View style={styles.Income}>
@@ -44,15 +30,6 @@ const Dashboard = ({onSwitch, onTransact}) => {
           <Text style={styles.word}>₱ 67,890</Text>
         </View>
       </View>
-      </View>
-      <View style={styles.container3}>
-
-      </View>
-      <View style={styles.mid}>
-        <Text style={styles.buttonText}>Transactions</Text>
-      <TouchableOpacity onPress={onSwitch}>
-        <Text style={styles.buttonText}>See all</Text>
-      </TouchableOpacity>
       </View>
     </View>
   );
@@ -79,42 +56,23 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '30%',
   },
-  transact: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 10,
-    width: '100%',
-    justifyContent: 'space-between',
-  },
   iconTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 40,
   },
-  avatarContainer: {
-    width: 25 + 25,
-    height: 25 + 25, 
-    borderRadius: 50, 
-    backgroundColor: '#fff',
-    justifyContent: 'center', 
-    alignItems: 'center', 
-  },
-  avatar: {
-    width: 35, 
-    height: 35, 
-    borderRadius: 50, 
-  },
   text: {
-    marginRight: 110, 
-    marginLeft: 10,
+    justifyContent: 'center', 
+    alignItems: 'center',
     fontSize: 24,
-    color: '#fff'
+    color: '#fff',
+    marginLeft: "15%" ,
+    marginRight: "35%"
   },
   info: {
     flexDirection: 'row',
     alignItems: 'center',
-    color: '#fff',
-    marginTop: 20
+    color: '#fff'
   },
   Income: {
     flexDirection: 'column',
@@ -150,31 +108,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 40,
   },
-  mid: {
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  buttonText: {
-    color: '#000',
-    fontSize: 18,
-    marginHorizontal: 100,
-    textDecorationLine: 'underline',
-    fontWeight: 'bold'
-  },
   button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    padding: 3,
-    borderRadius: 50,
-    width: '27%',
-    justifyContent: 'center',
-    marginVertical: 5
-  },
-  buttonText1: {
-    color: '#000',
-    fontSize: 18
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
 });
 
-export default Dashboard;
+export default Transactions;
